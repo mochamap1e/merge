@@ -1,0 +1,21 @@
+{
+    "name": "merge",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "start": "bun src/index.ts",
+        "dev": "bun --watch src/index.ts -dev"
+    },
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "@elysia/cors": "^1.4.2",
+        "@elysia/static": "^1.4.11",
+        "axios": "^1.17.0",
+        "elysia": "^1.4.28"
+    }
+}

@@ -1,0 +1,3 @@
+# merge
+
+ollama run phi4-mini:3.8b

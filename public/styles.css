@@ -1,0 +1,11 @@
+body {
+    color: white;
+    background-color: black;
+}
+
+#fields {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    gap: 10px;
+}
