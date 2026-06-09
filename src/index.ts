@@ -19,9 +19,9 @@ const app = new Elysia()
                 stream: false
             });
 
-            const response = JSON.parse(content + "}");
-
             console.log(content);
+
+            const response = JSON.parse(content + "}");
 
             return response;
         } catch(error) {
