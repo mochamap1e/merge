@@ -1,8 +1,6 @@
-const URL = "http://localhost:3050";
-
 async function mergeRequest(item1, item2) {
     try {
-        const request = await fetch(URL + "/merge", {
+        const request = await fetch(window.location.href + "merge", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -11,8 +9,15 @@ async function mergeRequest(item1, item2) {
         });
 
         const response = await request.json();
+        const result = document.getElementById("result");
 
-        document.getElementById("result").textContent = `Result: ${response.emoji} ${response.result}`;
+        if (response.success) {
+            result.textContent = `Result: ${response.emoji} ${response.result}`;
+        } else {
+            result.textContent = "Failed";
+        }
+
+        
     } catch(error) {
         return console.error(error);
     }

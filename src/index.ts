@@ -3,8 +3,9 @@ import { cors } from "@elysia/cors";
 import { staticPlugin } from "@elysia/static";
 import axios from "axios";
 
-const app = new Elysia()
-    .use(cors())
+new Elysia()
+    .use(cors({ origin: "*" }))
+    .use(staticPlugin({ prefix: "/" }))
 
     .post("/merge", async ({ body, status }) => {
         try {
@@ -19,9 +20,15 @@ const app = new Elysia()
                 stream: false
             });
 
-            console.log(content);
+            let response;
 
-            const response = JSON.parse(content + "}");
+            try {
+                response = JSON.parse(content + "}");
+                response.success = true;
+            } catch(error) {
+                console.log("Invalid json:", content);
+                response = { success: false };
+            }
 
             return response;
         } catch(error) {
@@ -35,6 +42,4 @@ const app = new Elysia()
         })
     })
 
-    .listen(3050, ({ port }) => console.log("App running on port", port));
-
-if (!process.argv.includes("-dev")) app.use(staticPlugin({ prefix: "/" }));
+    .listen(3000, ({ port }) => console.log("App running on port", port));
