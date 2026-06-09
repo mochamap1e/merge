@@ -10,5 +10,3 @@ if errorlevel 1 (
 ) else (
     echo Model already exists.
 )
-
-ollama run %model_name%
