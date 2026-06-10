@@ -16,13 +16,7 @@ async function request(endpoint, body) {
 }
 
 async function mergeRequest(item1, item2) {
-    const request = await fetch(window.location.href + "merge", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ a: item1, b: item2 })
-    });
+    const request = await request("merge", JSON.stringify({ a: item1, b: item2 }));
 
     const response = await request.json();
     const result = document.getElementById("result");
