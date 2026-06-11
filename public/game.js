@@ -16,13 +16,12 @@ async function request(endpoint, body) {
 }
 
 async function mergeRequest(item1, item2) {
-    const request = await request("merge", JSON.stringify({ a: item1, b: item2 }));
+    const data = await request("merge", JSON.stringify({ a: item1, b: item2 }));
 
-    const response = await request.json();
     const result = document.getElementById("result");
 
-    if (response.success) {
-        result.textContent = `Result: ${response.emoji} ${response.result}`;
+    if (data.success) {
+        result.textContent = `Result: ${data.emoji} ${data.result}`;
     } else {
         result.textContent = "Failed";
     }

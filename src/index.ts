@@ -19,14 +19,14 @@ new Elysia()
             let json;
 
             try {
-                json = JSON.parse(response + "}");
+                json = JSON.parse(response);
                 json.success = true;
             } catch(error) {
                 console.log("Invalid json:", response);
                 json = { success: false };
             }
 
-            return response;
+            return json;
         } catch(error) {
             console.log(error);
             return status(500);
